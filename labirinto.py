@@ -1,16 +1,20 @@
 # OBSERVAÇÃO: Necessário instalar a biblioteca matplotlib
 # (no linux, 'pip install matplotlib')
 import matplotlib.pyplot as pyplot
+import sys
 from random import randint
 
-num = 24
-
-scale = 8
+#NUM = ex: Matriz[6][6]
+if len(sys.argv) > 1:
+    num = int(sys.argv[1])
+else : num = 6
+if len(sys.argv) > 2:
+    scale = int(sys.argv[2])
+else : scale = 8
 
 pyplot.figure(figsize=(num/scale, num/scale))
 
 pyplot.style.use('dark_background')
-
 
 Norte = 2
 Sul = 3
@@ -24,6 +28,9 @@ cells = [[col, lin, False, False, False, False, lin + col + lin * (line_size-1)]
 groups = num * num
 group_index = 6
 
+#available_groups = []
+#for i in range(num*num):
+#    available_groups.append(i)
 
 def line(x1, y1, x2, y2):
     pyplot.plot([x1, x2], [y1, y2], color='white')
@@ -111,11 +118,11 @@ while groups > 1:
         groups -= 1
 
 
-print("Obs: coordenadas começam com (0,0) no canto inferior esquerdo!")
-print("[x, y, Norte, Sul, Leste, Oeste, grupo]")
-for lin in range(0, num):
-    for col in range(0, num):
-        print(cells[lin * line_size + col])
-print("Obs: coordenadas começam com (0,0) no canto inferior esquerdo!")
+#print("Obs: coordenadas começam com (0,0) no canto inferior esquerdo!")
+#print("[x, y, Norte, Sul, Leste, Oeste, grupo]")
+#for lin in range(0, num):
+#    for col in range(0, num):
+#        print(cells[lin * line_size + col])
+#print("Obs: coordenadas começam com (0,0) no canto inferior esquerdo!")
 
 pyplot.show()
